@@ -3,45 +3,32 @@ import {View, Text, Image, ScrollView, TextInput, TextInputBase} from 'react-nat
 
 export default function Index() {
   return (
-    <View style={{
-      flex: 1,
-      flexDirection: 'row',
-      padding: 16
-    }}>
-    <View style={{
-      flex: 1,
-      backgroundColor: "black",
-      justifyContent: 'center',
-      alignItems: 'center'
-    }}>
-      <Text style={{color: 'white',
-        fontSize: 32
 
-      }}> 
-        Hello world!
-      </Text>
-
-      <Image
-          source={{
-            uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
-          }}
-          style={{width: 200, height: 200}}
-        />
-      <View  style={{
-        padding: 16,
+    //contenitore
+    <View style={
+      {flex:1, 
         backgroundColor: 'white',
-        width: '100%'
-      }}>
-      <TextInput  style={{
-          height: 32,
-          backgroundColor: 'white',
-          borderWidth: 5,
-          width: '100%'
-        }}>
-        </TextInput>
-      </View>
-   </View>
-  </View>
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        paddingHorizontal: 16}
+    }>
+      <View style={{
+        width: '100%', 
+        height: 400, 
+        borderRadius: 10,
+       
+         flexDirection: 'row',
+         justifyContent: 'center', 
+         alignItems: 'center', 
+         
+         backgroundColor: 'gray'}}>
 
+          <Image source={{uri: 'https://img.freepik.com/free-psd/three-dimensional-real-estate-icon-mock-up_23-2149729115.jpg'}}
+          style={{width: 150, height: 150,resizeMode: 'cover', borderRadius: 150/2}}>
+          </Image>
+      <View style={{backgroundColor: 'green', height: 100, width: 100}}>
+      </View>
+      </View>
+    </View>
   );
 }
