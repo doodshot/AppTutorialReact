@@ -109,7 +109,7 @@ const DATA: Array<CardData> = [{
     prezzo: 1800
 }]
 
-const Card = (props) => {
+const Card = (props: CardData) => {
     return (<View style={{
         width: '100%', height: 500, borderColor: 'black', borderWidth: 2, borderRadius: 30, flexDirection: 'column'
     }}>
@@ -135,7 +135,7 @@ const Card = (props) => {
 }
 const renderItem: ListRenderItem<CardData> = ({item}) => {
     return (<Card
-        key={Index}
+       
         nome={item.nome}
         desc={item.desc}
         prezzo={item.prezzo}
