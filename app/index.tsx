@@ -1,62 +1,148 @@
-import {View, Text, Image, ScrollView, TextInput, TextInputBase} from 'react-native';
-
-const DATA = [
-  {
-    title: 'Titolo 1',
-    subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula nunc.',
-    backgroundColor: 'red',
-    immagine: require('../assets/images/logo.avif')
+import {View, Text, Image, ScrollView, TextInput, TextInputBase, FlatList, ListRenderItem} from 'react-native';
+const DATA = [{
+  url: "https://cdn.mos.cms.futurecdn.net/Vi8wM6XHzNeBvXH7bmf6w5-1920-80.jpg.webp",
+  nome: "GeForce RTX 3050",
+  desc: "La GeForceRTX™ 3050 si basa sulle prestazioni grafiche dell'architettura NVIDIA Ampere. Include RT Cores di seconda generazione ed Tensor Core di terza generazione dedicati, multiprocessori di streaming e memoria G6 ad alta velocità per i giochi più recenti. Passa a GeForce RTX.",
+  prezzo: 250
   },
   {
-    title: 'Titolo 2',
-    subTitle: 'Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.',
-    backgroundColor: 'green',
-    immagine: require('../assets/images/casa2.jpeg')
+      url: "https://cdn.mos.cms.futurecdn.net/puYWZBQjmYyf7YS7rVNikC-320-80.jpg",
+      nome: "GeForce RTX 3060",
+      desc: "La GeForce RTX™ 3060 Ti e la RTX 3060 permettono di sfruttare i giochi più recenti con la potenza di Ampere, l'architettura NVIDIA RTX di seconda generazione. Ottieni prestazioni incredibili con RT Core di seconda generazione e Tensor Core di terza generazione, nuovi multiprocessori di streaming e memoria G6 ad alta velocità.",
+      prezzo: 300
   },
   {
-    title: 'Titolo 3',
-    subTitle: 'Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.',
-    backgroundColor: 'yellow',
-    immagine: require('../assets/images/casa3.jpeg')
+      url: "https://www.digitaltrends.com/wp-content/uploads/2020/09/rtx-3080-07.jpg?resize=625,417&p=1",
+      nome: "GeForce RTX 3080",
+      desc: "Le schede grafiche GeForce RTX™ 3080 Ti e RTX 3080 offrono le prestazioni che i giocatori bramano grazie ad Ampere, l'architettura RTX di seconda generazione di NVIDIA. Sono costruite con RT Core di seconda generazione e Tensor Core di terza generazione dedicate, multiprocessori di streaming e una straordinaria memoria G6X, il tutto per offrirti una straordinaria esperienza di gioco.",
+      prezzo: 650
   },
   {
-    title: 'Titolo 4',
-    subTitle: 'Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.',
-    backgroundColor: 'blue',
-    immagine: require('../assets/images/casa3.jpeg')
+      url: "https://www.techradar.com/reviews/nvidia-geforce-rtx-3050",
+      nome: "GeForce RTX 3090",
+      desc: "La GeForce RTX™ 3090 e la 3039 Ti si basano su Ampere, l'architettura RTX di NVIDIA di seconda generazione. Sono dotate di RT Core di seconda generazione e Tensor Core di terza generazione dedicati, multiprocessori di streaming e una straordinaria memoria G6X fino a 24 GB, per fornire prestazioni di alta qualità per gamer e creativi.",
+      prezzo: 900
   },
   {
-    title: 'Titolo 5',
-    subTitle: 'Donec sollicitudin molestie malesuada.',
-    backgroundColor: 'purple',
-    immagine: require('../assets/images/casa3.jpeg')
+      url: "https://c1.neweggimages.com/productimage/nb300/BDCAS22103108TBI17A.jpg",
+      nome: "GeForce RTX 4090",
+      desc: "La GeForce RTX™ 4090 è la GPU GeForce definitiva. Si tratta di un enorme passo avanti in termini di prestazioni, efficienza e grafica basata su IA. Scopri il gaming ad altissime prestazioni, mondi virtuali incredibilmente dettagliati, produttività senza precedenti e nuovi modi di creare. Basata sull'architettura NVIDIA Ada Lovelace e include 24 GB di memoria G6X per offrire l'esperienza definitiva per giocatori e creativi..",
+      prezzo: 1800
+  },{
+  url: "https://www.techradar.com/reviews/nvidia-geforce-rtx-3050",
+  nome: "GeForce RTX 3050",
+  desc: "La GeForceRTX™ 3050 si basa sulle prestazioni grafiche dell'architettura NVIDIA Ampere. Include RT Cores di seconda generazione ed Tensor Core di terza generazione dedicati, multiprocessori di streaming e memoria G6 ad alta velocità per i giochi più recenti. Passa a GeForce RTX.",
+  prezzo: 250
+  },
+  {
+      url: "https://cdn.mos.cms.futurecdn.net/puYWZBQjmYyf7YS7rVNikC-320-80.jpg",
+      nome: "GeForce RTX 3060",
+      desc: "La GeForce RTX™ 3060 Ti e la RTX 3060 permettono di sfruttare i giochi più recenti con la potenza di Ampere, l'architettura NVIDIA RTX di seconda generazione. Ottieni prestazioni incredibili con RT Core di seconda generazione e Tensor Core di terza generazione, nuovi multiprocessori di streaming e memoria G6 ad alta velocità.",
+      prezzo: 300
+  },
+  {
+      url: "https://www.digitaltrends.com/wp-content/uploads/2020/09/rtx-3080-07.jpg?resize=625,417&p=1",
+      nome: "GeForce RTX 3080",
+      desc: "Le schede grafiche GeForce RTX™ 3080 Ti e RTX 3080 offrono le prestazioni che i giocatori bramano grazie ad Ampere, l'architettura RTX di seconda generazione di NVIDIA. Sono costruite con RT Core di seconda generazione e Tensor Core di terza generazione dedicate, multiprocessori di streaming e una straordinaria memoria G6X, il tutto per offrirti una straordinaria esperienza di gioco.",
+      prezzo: 650
+  },
+  {
+      url: "https://www.techradar.com/reviews/nvidia-geforce-rtx-3050",
+      nome: "GeForce RTX 3090",
+      desc: "La GeForce RTX™ 3090 e la 3039 Ti si basano su Ampere, l'architettura RTX di NVIDIA di seconda generazione. Sono dotate di RT Core di seconda generazione e Tensor Core di terza generazione dedicati, multiprocessori di streaming e una straordinaria memoria G6X fino a 24 GB, per fornire prestazioni di alta qualità per gamer e creativi.",
+      prezzo: 900
+  },
+  {
+      url: "https://c1.neweggimages.com/productimage/nb300/BDCAS22103108TBI17A.jpg",
+      nome: "GeForce RTX 4090",
+      desc: "La GeForce RTX™ 4090 è la GPU GeForce definitiva. Si tratta di un enorme passo avanti in termini di prestazioni, efficienza e grafica basata su IA. Scopri il gaming ad altissime prestazioni, mondi virtuali incredibilmente dettagliati, produttività senza precedenti e nuovi modi di creare. Basata sull'architettura NVIDIA Ada Lovelace e include 24 GB di memoria G6X per offrire l'esperienza definitiva per giocatori e creativi..",
+      prezzo: 1800
+  },{
+  url: "https://www.techradar.com/reviews/nvidia-geforce-rtx-3050",
+  nome: "GeForce RTX 3050",
+  desc: "La GeForceRTX™ 3050 si basa sulle prestazioni grafiche dell'architettura NVIDIA Ampere. Include RT Cores di seconda generazione ed Tensor Core di terza generazione dedicati, multiprocessori di streaming e memoria G6 ad alta velocità per i giochi più recenti. Passa a GeForce RTX.",
+  prezzo: 250
+  },
+  {
+      url: "https://cdn.mos.cms.futurecdn.net/puYWZBQjmYyf7YS7rVNikC-320-80.jpg",
+      nome: "GeForce RTX 3060",
+      desc: "La GeForce RTX™ 3060 Ti e la RTX 3060 permettono di sfruttare i giochi più recenti con la potenza di Ampere, l'architettura NVIDIA RTX di seconda generazione. Ottieni prestazioni incredibili con RT Core di seconda generazione e Tensor Core di terza generazione, nuovi multiprocessori di streaming e memoria G6 ad alta velocità.",
+      prezzo: 300
+  },
+  {
+      url: "https://www.digitaltrends.com/wp-content/uploads/2020/09/rtx-3080-07.jpg?resize=625,417&p=1",
+      nome: "GeForce RTX 3080",
+      desc: "Le schede grafiche GeForce RTX™ 3080 Ti e RTX 3080 offrono le prestazioni che i giocatori bramano grazie ad Ampere, l'architettura RTX di seconda generazione di NVIDIA. Sono costruite con RT Core di seconda generazione e Tensor Core di terza generazione dedicate, multiprocessori di streaming e una straordinaria memoria G6X, il tutto per offrirti una straordinaria esperienza di gioco.",
+      prezzo: 650
+  },
+  {
+      url: "https://www.techradar.com/reviews/nvidia-geforce-rtx-3050",
+      nome: "GeForce RTX 3090",
+      desc: "La GeForce RTX™ 3090 e la 3039 Ti si basano su Ampere, l'architettura RTX di NVIDIA di seconda generazione. Sono dotate di RT Core di seconda generazione e Tensor Core di terza generazione dedicati, multiprocessori di streaming e una straordinaria memoria G6X fino a 24 GB, per fornire prestazioni di alta qualità per gamer e creativi.",
+      prezzo: 900
+  },
+  {
+      url: "https://c1.neweggimages.com/productimage/nb300/BDCAS22103108TBI17A.jpg",
+      nome: "GeForce RTX 4090",
+      desc: "La GeForce RTX™ 4090 è la GPU GeForce definitiva. Si tratta di un enorme passo avanti in termini di prestazioni, efficienza e grafica basata su IA. Scopri il gaming ad altissime prestazioni, mondi virtuali incredibilmente dettagliati, produttività senza precedenti e nuovi modi di creare. Basata sull'architettura NVIDIA Ada Lovelace e include 24 GB di memoria G6X per offrire l'esperienza definitiva per giocatori e creativi..",
+      prezzo: 1800
+  },{
+  url: "https://www.techradar.com/reviews/nvidia-geforce-rtx-3050",
+  nome: "GeForce RTX 3050",
+  desc: "La GeForceRTX™ 3050 si basa sulle prestazioni grafiche dell'architettura NVIDIA Ampere. Include RT Cores di seconda generazione ed Tensor Core di terza generazione dedicati, multiprocessori di streaming e memoria G6 ad alta velocità per i giochi più recenti. Passa a GeForce RTX.",
+  prezzo: 250
+  },
+  {
+      url: "https://cdn.mos.cms.futurecdn.net/puYWZBQjmYyf7YS7rVNikC-320-80.jpg",
+      nome: "GeForce RTX 3060",
+      desc: "La GeForce RTX™ 3060 Ti e la RTX 3060 permettono di sfruttare i giochi più recenti con la potenza di Ampere, l'architettura NVIDIA RTX di seconda generazione. Ottieni prestazioni incredibili con RT Core di seconda generazione e Tensor Core di terza generazione, nuovi multiprocessori di streaming e memoria G6 ad alta velocità.",
+      prezzo: 300
+  },
+  {
+      url: "https://www.digitaltrends.com/wp-content/uploads/2020/09/rtx-3080-07.jpg?resize=625,417&p=1",
+      nome: "GeForce RTX 3080",
+      desc: "Le schede grafiche GeForce RTX™ 3080 Ti e RTX 3080 offrono le prestazioni che i giocatori bramano grazie ad Ampere, l'architettura RTX di seconda generazione di NVIDIA. Sono costruite con RT Core di seconda generazione e Tensor Core di terza generazione dedicate, multiprocessori di streaming e una straordinaria memoria G6X, il tutto per offrirti una straordinaria esperienza di gioco.",
+      prezzo: 650
+  },
+  {
+      url: "https://www.techradar.com/reviews/nvidia-geforce-rtx-3050",
+      nome: "GeForce RTX 3090",
+      desc: "La GeForce RTX™ 3090 e la 3039 Ti si basano su Ampere, l'architettura RTX di NVIDIA di seconda generazione. Sono dotate di RT Core di seconda generazione e Tensor Core di terza generazione dedicati, multiprocessori di streaming e una straordinaria memoria G6X fino a 24 GB, per fornire prestazioni di alta qualità per gamer e creativi.",
+      prezzo: 900
+  },
+  {
+      url: "https://c1.neweggimages.com/productimage/nb300/BDCAS22103108TBI17A.jpg",
+      nome: "GeForce RTX 4090",
+      desc: "La GeForce RTX™ 4090 è la GPU GeForce definitiva. Si tratta di un enorme passo avanti in termini di prestazioni, efficienza e grafica basata su IA. Scopri il gaming ad altissime prestazioni, mondi virtuali incredibilmente dettagliati, produttività senza precedenti e nuovi modi di creare. Basata sull'architettura NVIDIA Ada Lovelace e include 24 GB di  memoria G6X per offrire l'esperienza definitiva per giocatori e creativi..",
+      prezzo: 1800
   }
-];
+]
 
 const Card = (props) => {
   console.log(props)
 return (
 <View style={{
  width: '100%', 
- height: 400, 
- borderRadius: 10,
-  flexDirection: 'row',
-  marginBottom: 16,
+ height: 500, 
+ borderColor: 'black',
+ borderWidth: 2,
+ borderRadius: 30,
+  flexDirection: 'colums',
   backgroundColor: props.backgroundColor}}>
 
     {/* IMMAGINE */}
    <View style={{flex: 1,justifyContent: 'center', 
   alignItems: 'center',}}>
    <Image 
-   source={props.immagine}
-   style={{width: 150, height: 150, resizeMode: 'cover', borderRadius: 150/2}}>
+   source={{uri:props.url}}
+   style={{width: '100%', height: 150, flex: 1, borderTopLeftRadius: 30, borderTopRightRadius: 30}}>
    </Image>
    </View>
-   
-  <View style={{flex: 1,paddingVertical: 16, }}>
+  <View style={{flex: 1,paddingVertical: 16, padding: 12 }}>
  <Text style={{fontSize: 24, fontWeight: 800}}>{props.Title}</Text>
- <View style={{flex: 1, justifyContent: 'center'}}>
+ <View style={{flex: 1, justifyContent: 'center',paddingBottom:16}}>
  <Text>{props.subTitle}</Text>
+ <Text style={{paddingTop: 16, fontSize: 22, fontWeight: 600, alignItems: 'center', width:'100%'}}>{props.price}$</Text>
  </View>
 
 </View>
@@ -65,31 +151,33 @@ return (
 );
 
 }
-
+const renderItem: ListRenderItem<Card> = ({item}) => {
+return (
+  <Card 
+          key={Index}
+          Title={item.nome}
+          subTitle={item.desc}
+          price={item.prezzo}
+          backgroundColor={item.backgroundColor}
+          url={item.url}
+          />
+)
+}
+const ItemSeparatorComponent = () => {
+  
+  return (<View style={{height:16}}/>)
+}
+const ListHeaderComponent = () => {
+  return ( <Text style={{fontSize: 32, paddingVertical: 16, textAlign: 'center'}}>Bit per Byte</Text>)
+}
 export default function Index() {
   return (
-
+    <FlatList data={DATA}  
+    renderItem={renderItem}
+    ItemSeparatorComponent={ItemSeparatorComponent}
+    ListHeaderComponent={ListHeaderComponent}
+    style={{paddingHorizontal: 16}}
+    />
     
-     //contenitore
-    <ScrollView style={
-      {flex:1, 
-        backgroundColor: 'white', 
-        paddingHorizontal: 16}
-    }>
-      <View style={{flex: 1}}>
-      {DATA.map((card, Index)=> {
-        return (
-          <Card 
-          key={Index}
-          Title={card.title}
-          subTitle={card.subTitle}
-          backgroundColor={card.backgroundColor}
-          immagine={card.immagine}
-          />
-        );
-      })}
-      </View>
-      
-    </ScrollView>
   );
 }
