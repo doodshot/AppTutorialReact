@@ -4,7 +4,7 @@ import {FlatList, ListRenderItem, Text, View} from 'react-native';
 
 const renderItem: ListRenderItem<CardData> = ({item}) => {
     return (<Card
-       
+        
         nome={item.nome}
         desc={item.desc}
         prezzo={item.prezzo}

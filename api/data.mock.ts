@@ -1,15 +1,17 @@
 export interface CardData {
     url: string;
     nome: string;
-    desc: string, 
-    prezzo: number
+    desc: string;
+    prezzo: number;
+    backgroundColor?: string;
 }
 
 export const DATA: Array<CardData> = [{
     url: "https://cdn.mos.cms.futurecdn.net/Vi8wM6XHzNeBvXH7bmf6w5-1920-80.jpg.webp",
     nome: "GeForce RTX 3050",
     desc: "La GeForceRTX™ 3050 si basa sulle prestazioni grafiche dell'architettura NVIDIA Ampere. Include RT Cores di seconda generazione ed Tensor Core di terza generazione dedicati, multiprocessori di streaming e memoria G6 ad alta velocità per i giochi più recenti. Passa a GeForce RTX.",
-    prezzo: 250
+    prezzo: 250,
+    backgroundColor: 'red'
 }, {
     url: "https://cdn.mos.cms.futurecdn.net/puYWZBQjmYyf7YS7rVNikC-320-80.jpg",
     nome: "GeForce RTX 3060",

@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import { styles } from "./cardComponentsStyle";
 
 export const Card = (props: CardData) => {
-    return (<View style={styles.container}>
+    return (<View style={[styles.container,{backgroundColor: props.backgroundColor ? props.backgroundColor : 'light-gray' }]}>
         <View style={styles.containerView}>
             <Image
                 source={{uri: props.url}}
